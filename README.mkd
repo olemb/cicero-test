@@ -5,6 +5,6 @@ These are some sample I'm using to test Radovan Bast's
 
 Links to presentations:
 
-* http://cicero.xyz/v1/github/olemb/cicero-test/master/bottle.mdk/remark/
+* http://cicero.xyz/v1/github/olemb/cicero-test/master/bottle.mkd/remark/
 
-* http://cicero.xyz/v1/github/olemb/cicero-test/master/test.mdk/remark/
+* http://cicero.xyz/v1/github/olemb/cicero-test/master/test.mkd/remark/
