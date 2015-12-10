@@ -2,6 +2,21 @@
 
 ```python
 class Parser(object):
+    def __init__(self):
+        """Create a new parser."""
+        self._parsed_messages = deque()
+        self._reset()
+
+    def _reset(self):
+        self._spec = None
+        self._bytes = []
+        self._inside_sysex = False
+
+    def _deliver(self, message=None):
+        if not message:
+            message = build_message(self._spec, self._bytes)
+        self._parsed_messages.append(message)
+
     def _handle_status_byte(self, byte):
         try:
             spec = get_spec(byte)
@@ -28,4 +43,18 @@ class Parser(object):
         else:
             # Ignore message.
             self._reset()
+    ...
+```
+
+# A Short Code Example For Comparison (But With a Very Long Title)
+
+```python
+def parse_all(data):
+    parser = Parser()
+    parser.feed(data)
+    return list(parser)
+
+def test_function():
+    "Doc string"
+    some_code()
 ```
