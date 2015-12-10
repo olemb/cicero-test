@@ -1,9 +1,31 @@
-# Test
+# A Really Long Code Example
 
-Testing.
+```python
+class Parser(object):
+    def _handle_status_byte(self, byte):
+        try:
+            spec = get_spec(byte)
+            valid = True
+        except LookupError:
+            valid = False
 
----
-
-# Page 2.
-
-Testing some more.
+        if self._inside_sysex and (0xf8 <= byte <= 0xff):
+            # Realtime message inside sysex.
+            # Deliver it straight away.
+            if valid:
+                message = build_message(spec, [byte])
+                self._deliver(message)
+        elif byte == 0xf7:
+            # End of sysex.
+            if self._inside_sysex:
+                self._deliver()
+            self._reset()
+        elif valid:
+            # Start new message.
+            self._spec = spec
+            self._bytes = [byte]
+            self._inside_sysex = (byte == 0xf0)
+        else:
+            # Ignore message.
+            self._reset()
+```
