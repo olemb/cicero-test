@@ -1,4 +1,3 @@
 # Image test.
 
-[](cicero.png)
-
+![Bust of Cicero](cicero.png)
